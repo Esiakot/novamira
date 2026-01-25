@@ -1,0 +1,85 @@
+.miraNews {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: var(--background-input);
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  box-shadow: var(--inset-shadow);
+}
+.miraNewsInput {
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 15vh;
+  border: none;
+  outline: none;
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: var(--background-post);
+  box-shadow: var(--inset-shadow-post);
+  color: var(--text-secondary);
+  word-break: break-word;
+  font-family: inherit;
+}
+.miraNewsInput::placeholder {
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.miraNewsActions {
+  height: 4vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.buttonLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: 1rem;
+}
+.charCount {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  font-weight: 500;
+  user-select: none;
+}
+.charCount.yellow {
+  color: #e6b800;
+}
+.charCount.red {
+  color: #d32f2f;
+}
+.longTextGreen {
+  color: #43b847;
+}
+.icons {
+  background: none;
+  border: none;
+  height: 1.5rem;
+  cursor: pointer;
+  color: var(--icons);
+  transition: all 0.2s;
+}
+.icons:hover {
+  color: var(--icons-hover);
+}
+.sendButton {
+  height: 1.5rem;
+  width: 5vw;
+  background-color: var(--background);
+  color: var(--text-secondary);
+  box-shadow: var(--shadow);
+  margin-right: 1rem;
+  border: none;
+  border-radius: 1.5rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.sendButton:hover {
+  background-color: var(--icons);
+  color: var(--background-input);
+}

@@ -1,0 +1,184 @@
+.base {
+  margin-top: 6vh;
+  width: 33%;
+  height: 100%;
+}
+.profilWrapper {
+  display: flex;
+  width: 33%;
+  padding-right: 1vw;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2vh;
+  position: fixed;
+}
+.profil {
+  width: 20vw;
+  height: 12vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1rem;
+  background-color: var(--background-input);
+  border-radius: 0.5rem;
+  box-shadow: var(--inset-shadow);
+}
+.profilContainer {
+  width: 100%;
+  height: 8vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--icons);
+}
+.usernameContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+.userDetails {
+  margin-left: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  color: var(--text-secondary);
+}
+.username {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.userHandle {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+.usernameButton,
+.userButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--icons);
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.usernameButton {
+  font-size: 1rem;
+  font-weight: 600;
+}
+.usernameButton:hover,
+.userButton:hover {
+  color: var(--icons-hover);
+}
+.userBio {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-top: 0.2rem;
+}
+.avatar {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+}
+.optionContainer {
+  width: 100%;
+  height: 4vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+.userInfo {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+.optionButton {
+  background: none;
+  border: none;
+  height: 1.5rem;
+  cursor: pointer;
+  color: var(--icons);
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.optionButton:hover {
+  color: var(--icons-hover);
+}
+.textCount {
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+.count {
+  font-size: 0.8rem;
+  font-weight: 600;
+  user-select: none;
+}
+
+.navigationPages {
+  width: 30vw;
+  height: 65vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 0 1rem;
+  background: linear-gradient(90deg, #d8d9da00 99%, #00122925 100%);
+}
+
+.navButton {
+  width: 40%;
+  height: 5vh;
+  padding: 0.8rem 1rem;
+  margin-bottom: 0.5rem;
+  text-align: left;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: all 0.2s;
+  background: linear-gradient(180deg, #d8d9da00 95%, #00122925 100%);
+}
+.navButton:hover {
+  color: var(--icons-hover);
+  background: linear-gradient(180deg, #d8d9da00 95%, #ff3700 100%);
+}
+.rgpdPages {
+  width: 14vw;
+  display: flex;
+  gap: 0.3rem;
+  flex-direction: column;
+  margin-right: 1vw;
+}
+.rgpdTop,
+.rgpdBottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.rgpdLink,
+.copyright {
+  text-align: right;
+  color: var(--text-secondary);
+  transition: color 0.2s;
+}
+.rgpdLink {
+  width: 30%;
+  font-size: 0.6rem;
+}
+.copyright {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+.rgpdLink:hover,
+.copyright:hover {
+  color: var(--icons-hover);
+}
