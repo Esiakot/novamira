@@ -23,7 +23,6 @@
   font-family: inherit;
 }
 .miraNewsInput::placeholder {
-  color: var(--text-secondary);
   font-weight: 600;
 }
 

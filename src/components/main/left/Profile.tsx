@@ -1,6 +1,9 @@
 "use client";
-import React, { useRef } from "react";
-import styles from "@/styles/main/left/Profil.module.css";
+import React, { useEffect, useState } from "react";
+import styles from "@/styles/main/left/Profile.module.css";
+// On importe le type depuis le service pour être sûr que le Front et le Back parlent la même langue
+import type { UserProfile } from "@/libs/services/users/profile.service";
+import Link from "next/link";
 import {
   SettingsIcon,
   Following,
@@ -9,9 +12,43 @@ import {
   MiraIcon,
   SubMira,
 } from "../../FlatIcons";
-import Link from "next/link";
 
-export default function Profil() {
+export default function Profile() {
+  const [profile, setProfile] = useState<UserProfile | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const res = await fetch("/api/users/profile");
+
+        if (res.status === 401) {
+          setError("Non connecté");
+          return;
+        }
+
+        if (!res.ok) {
+          setError("Erreur chargement profil");
+          return;
+        }
+
+        const data: UserProfile = await res.json();
+        setProfile(data);
+      } catch (e) {
+        console.error(e);
+        setError("Erreur réseau");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProfile();
+  }, []);
+
+  if (loading) return <div className={styles.base}>Chargement...</div>;
+  if (error) return <div className={styles.base}>{error}</div>;
+
   return (
     <>
       <div className={styles.base}>
@@ -19,18 +56,20 @@ export default function Profil() {
           <div className={styles.profil}>
             <div className={styles.profilContainer}>
               <img
-                src="/test-1.jpg"
+                src={profile?.avatar_url || "/default-avatar.png"}
                 alt="User Avatar"
                 className={styles.avatar}
               />
               <div className={styles.userDetails}>
                 <div className={styles.usernameContainer}>
-                  <button className={styles.usernameButton}>John Doe</button>
-                  <button className={styles.userButton}>@johndoe</button>
+                  <button className={styles.usernameButton}>
+                    {profile?.username_display || "Utilisateur"}
+                  </button>
+                  <button className={styles.userButton}>
+                    @{profile?.username_handle || "handle"}
+                  </button>
                 </div>
-                <p className={styles.userBio}>
-                  Just a regular user exploring the world of web development!
-                </p>
+                <p className={styles.userBio}>{profile?.bio || ""}</p>
               </div>
             </div>
             <div className={styles.optionContainer}>
@@ -58,6 +97,7 @@ export default function Profil() {
               </div>
             </div>
           </div>
+
           <div className={styles.navigationPages}>
             <button className={styles.navButton}>Posts</button>
             <button className={styles.navButton}>Media</button>
@@ -69,13 +109,12 @@ export default function Profil() {
           </div>
           <div className={styles.rgpdPages}>
             <div className={styles.rgpdTop}>
-              {" "}
               <Link href="/contact" className={styles.rgpdLink}>
                 Contact
-              </Link>{" "}
+              </Link>
               <Link href="/legal" className={styles.rgpdLink}>
                 Mentions légales
-              </Link>{" "}
+              </Link>
               <Link href="/accessibility" className={styles.rgpdLink}>
                 Accessibilité
               </Link>
@@ -90,7 +129,7 @@ export default function Profil() {
               <Link href="/cookies" className={styles.rgpdLink}>
                 Politique
                 <br /> de cookies
-              </Link>{" "}
+              </Link>
             </div>
             <div className={styles.copyright}>
               © 2026 novamira - Tous droits réservés - v0.9.3
