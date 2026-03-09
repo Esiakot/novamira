@@ -1,0 +1,288 @@
+/* ═══════════════════════════════════════
+   Auth — Login / Register
+   ═══════════════════════════════════════ */
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: var(--background);
+  font-family: var(--font-quicksand);
+}
+
+/* ── Card ── */
+.card {
+  background: var(--background-input);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: var(--inset-shadow);
+}
+
+/* ── Branding ── */
+.logo {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--icons);
+  text-align: center;
+  margin-bottom: 0.2rem;
+}
+
+.subtitle {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  opacity: 0.7;
+}
+
+/* ── Form ── */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.input {
+  width: 100%;
+  height: 40px;
+  border: none;
+  outline: none;
+  border-radius: 12px;
+  padding: 0 16px;
+  font-size: 0.82rem;
+  background: var(--foreground);
+  box-shadow: var(--inset-shadow);
+  font-family: inherit;
+  color: var(--text-primary);
+  transition: box-shadow 0.2s;
+}
+
+.input:focus {
+  box-shadow: var(--inset-shadow), 0 0 0 2px var(--icons-border);
+}
+
+.input::placeholder {
+  color: var(--text-secondary);
+  font-weight: 500;
+  opacity: 0.5;
+}
+
+/* ── Error ── */
+.error {
+  color: #d32f2f;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 0.5rem 0.75rem;
+  background: rgba(211, 47, 47, 0.06);
+  border-radius: 8px;
+  border-left: 3px solid #d32f2f;
+}
+
+/* ── Button ── */
+.button {
+  width: 100%;
+  height: 42px;
+  border: none;
+  border-radius: 12px;
+  background: var(--icons);
+  color: var(--foreground);
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  margin-top: 0.3rem;
+}
+
+.button:hover:not(:disabled) {
+  background: var(--icons-border);
+}
+
+.button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Switch ── */
+.switch {
+  text-align: center;
+  margin-top: 1.25rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  opacity: 0.8;
+}
+
+.switchButton {
+  background: none;
+  border: none;
+  color: var(--icons-border);
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-family: inherit;
+  margin-left: 0.25rem;
+  transition: color 0.2s;
+}
+
+.switchButton:hover {
+  color: var(--icons-hover);
+}
+
+/* ── Step Indicator ── */
+.stepIndicator {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.stepDot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  background: var(--foreground);
+  color: var(--text-secondary);
+  box-shadow: var(--inset-shadow);
+  transition: all 0.3s ease;
+}
+
+.stepActive .stepDot {
+  background: var(--icons);
+  color: var(--foreground);
+}
+
+.stepDone .stepDot {
+  background: var(--icons-border);
+  color: var(--foreground);
+}
+
+.stepLabel {
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  opacity: 0.5;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.stepActive .stepLabel {
+  color: var(--icons);
+  opacity: 1;
+}
+
+.stepDone .stepLabel {
+  color: var(--icons-border);
+  opacity: 0.8;
+}
+
+/* ── Hint ── */
+.hint {
+  font-size: 0.65rem;
+  color: var(--text-secondary);
+  opacity: 0.6;
+  font-weight: 500;
+  margin-top: 0.15rem;
+}
+
+/* ── Step Buttons ── */
+.stepButtons {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.3rem;
+}
+
+.stepButtons .button {
+  flex: 1;
+}
+
+.backBtn {
+  flex: 0 0 auto;
+  height: 42px;
+  padding: 0 1.25rem;
+  border: none;
+  border-radius: 12px;
+  background: var(--foreground);
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: var(--inset-shadow);
+  transition: background 0.2s;
+}
+
+.backBtn:hover {
+  background: var(--background);
+}
+
+/* ── Summary ── */
+.summary {
+  background: var(--foreground);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  box-shadow: var(--inset-shadow);
+}
+
+.summaryTitle {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.6rem;
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.3rem 0;
+  font-size: 0.75rem;
+}
+
+.summaryRow span:first-child {
+  color: var(--text-secondary);
+  font-weight: 500;
+  opacity: 0.7;
+}
+
+.summaryRow span:last-child {
+  color: var(--text-primary);
+  font-weight: 600;
+}

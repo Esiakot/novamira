@@ -1,26 +1,4 @@
 .page {
-  --background: #d8d9da;
-  --background-input: #fff6e0;
-  --foreground: #fff;
-  --icons: #001229;
-  --icons-hover: #fd8a6b;
-  --icons-border: #3b71b8;
-  --transparent: transparent;
-
-  --text-primary: #000;
-  --text-secondary: #001229;
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-  --button-secondary-border: #ebebeb;
-
-  --inset-shadow: inset 0 0px 3px #000000dd;
-  --left-inset-shadow: inset -6px 0px 4px #0000004d;
-
-  --inset-shadow-post: inset 0px -1px 0px 0px #000000dd;
-
-  --shadow: 0 0px 3px #000000dd;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,4 +13,13 @@
   gap: 1vw;
   width: 100%;
   padding: 1rem;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-size: 1.2rem;
+  color: var(--text-secondary);
 }

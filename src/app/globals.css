@@ -1,13 +1,23 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  --background: #d8d9da;
+  --background-input: #fff6e0;
+  --foreground: #fff;
+  --icons: #001229;
+  --icons-hover: #fd8a6b;
+  --icons-border: #3b71b8;
+  --transparent: transparent;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --text-primary: #000;
+  --text-secondary: #001229;
+
+  --button-primary-hover: #383838;
+  --button-secondary-hover: #f2f2f2;
+  --button-secondary-border: #ebebeb;
+
+  --inset-shadow: inset 0 0px 3px #000000dd;
+  --left-inset-shadow: inset -6px 0px 4px #0000004d;
+  --inset-shadow-post: inset 0px -1px 0px 0px #000000dd;
+  --shadow: 0 0px 3px #000000dd;
 }
 
 html,
@@ -33,10 +43,4 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
 }

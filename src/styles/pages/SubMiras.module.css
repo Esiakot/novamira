@@ -1,0 +1,416 @@
+/* ═══════════════════════════════════════
+   SubMiras list page
+   ═══════════════════════════════════════ */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  font-family: var(--font-quicksand);
+  background-color: var(--background);
+}
+
+.container {
+  margin-top: calc(6vh + 2rem);
+  width: 100%;
+  max-width: 700px;
+  padding: 0 1rem 2rem;
+}
+
+.title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.3rem;
+}
+
+.subtitle {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  opacity: 0.65;
+  margin-bottom: 1.5rem;
+}
+
+.loading,
+.empty {
+  text-align: center;
+  color: var(--text-secondary);
+  opacity: 0.55;
+  padding: 3rem 0;
+  font-size: 0.9rem;
+}
+
+/* ── Grid ── */
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.card {
+  background-color: var(--background-input);
+  border-radius: 14px;
+  padding: 1.1rem 1.25rem;
+  box-shadow: var(--inset-shadow);
+  transition: transform 0.15s;
+}
+
+.card:hover {
+  transform: translateY(-1px);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.45rem;
+}
+
+.cardName {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--icons);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.2s;
+}
+
+.cardName:hover {
+  color: var(--icons-hover);
+}
+
+.topicIcon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.followBtn {
+  padding: 0.35rem 1rem;
+  border: 2px solid var(--icons-border);
+  border-radius: 20px;
+  background: none;
+  color: var(--icons-border);
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: var(--font-quicksand);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.followBtn:hover {
+  background: var(--icons-border);
+  color: #fff;
+}
+
+.followBtn.following {
+  background: var(--icons-border);
+  color: #fff;
+}
+
+.followBtn.following:hover {
+  background: #c62828;
+  border-color: #c62828;
+}
+
+.cardDesc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  line-height: 1.45;
+  opacity: 0.85;
+}
+
+.cardStats {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  opacity: 0.55;
+}
+
+/* ── Header Row ── */
+.headerRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.headerRow .title {
+  margin-bottom: 0.3rem;
+}
+
+.headerRow .subtitle {
+  margin-bottom: 0;
+}
+
+.createBtn {
+  flex-shrink: 0;
+  padding: 0.5rem 1.1rem;
+  border: none;
+  border-radius: 12px;
+  background: var(--icons);
+  color: var(--foreground);
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: var(--font-quicksand);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.createBtn:hover {
+  background: var(--icons-border);
+}
+
+.createBtn:active {
+  transform: scale(0.97);
+}
+
+/* ── Create Form ── */
+.createForm {
+  background: var(--background-input);
+  border-radius: 14px;
+  padding: 1.25rem;
+  box-shadow: var(--inset-shadow);
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.createField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.createLabel {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.optional {
+  font-weight: 500;
+  opacity: 0.5;
+  text-transform: none;
+}
+
+.createInput {
+  width: 100%;
+  height: 38px;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  padding: 0 14px;
+  font-size: 0.82rem;
+  background: var(--foreground);
+  box-shadow: var(--inset-shadow);
+  font-family: inherit;
+  color: var(--text-primary);
+  transition: box-shadow 0.2s;
+}
+
+.createInput:focus {
+  box-shadow: var(--inset-shadow), 0 0 0 2px var(--icons-border);
+}
+
+.createTextarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.82rem;
+  background: var(--foreground);
+  box-shadow: var(--inset-shadow);
+  font-family: inherit;
+  color: var(--text-primary);
+  resize: none;
+  transition: box-shadow 0.2s;
+}
+
+.createTextarea:focus {
+  box-shadow: var(--inset-shadow), 0 0 0 2px var(--icons-border);
+}
+
+.createError {
+  color: #d32f2f;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.4rem 0.6rem;
+  background: rgba(211, 47, 47, 0.06);
+  border-radius: 8px;
+  border-left: 3px solid #d32f2f;
+}
+
+.createSubmitBtn {
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  background: var(--icons);
+  color: var(--foreground);
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.createSubmitBtn:hover:not(:disabled) {
+  background: var(--icons-border);
+}
+
+.createSubmitBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Header Row ── */
+.headerRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.headerRow .title {
+  margin-bottom: 0.3rem;
+}
+
+.headerRow .subtitle {
+  margin-bottom: 0;
+}
+
+.createBtn {
+  flex-shrink: 0;
+  padding: 0.5rem 1.2rem;
+  border: none;
+  border-radius: 12px;
+  background: var(--icons);
+  color: var(--foreground);
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: var(--font-quicksand);
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.createBtn:hover {
+  background: var(--icons-border);
+}
+
+/* ── Create Topic Form ── */
+.createForm {
+  background: var(--background-input);
+  border-radius: 14px;
+  padding: 1.25rem;
+  box-shadow: var(--inset-shadow);
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.createField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.createLabel {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.optional {
+  text-transform: none;
+  opacity: 0.5;
+  font-weight: 500;
+}
+
+.createInput {
+  width: 100%;
+  height: 40px;
+  border: none;
+  outline: none;
+  border-radius: 12px;
+  padding: 0 16px;
+  font-size: 0.82rem;
+  background: var(--foreground);
+  box-shadow: var(--inset-shadow);
+  font-family: inherit;
+  color: var(--text-primary);
+  transition: box-shadow 0.2s;
+}
+
+.createInput:focus {
+  box-shadow: var(--inset-shadow), 0 0 0 2px var(--icons-border);
+}
+
+.createTextarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-size: 0.82rem;
+  background: var(--foreground);
+  box-shadow: var(--inset-shadow);
+  font-family: inherit;
+  color: var(--text-primary);
+  resize: none;
+  transition: box-shadow 0.2s;
+}
+
+.createTextarea:focus {
+  box-shadow: var(--inset-shadow), 0 0 0 2px var(--icons-border);
+}
+
+.createError {
+  color: #d32f2f;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.4rem 0.6rem;
+  background: rgba(211, 47, 47, 0.06);
+  border-radius: 8px;
+  border-left: 3px solid #d32f2f;
+}
+
+.createSubmitBtn {
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: 12px;
+  background: var(--icons);
+  color: var(--foreground);
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.createSubmitBtn:hover:not(:disabled) {
+  background: var(--icons-border);
+}
+
+.createSubmitBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

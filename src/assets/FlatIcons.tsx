@@ -1,5 +1,19 @@
 import React from "react";
 
+export const PrivateLockIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    width="14"
+    height="14"
+    {...props}
+  >
+    <rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor" strokeWidth="2" />
+    <path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+  </svg>
+);
+
 export const LoginIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg
     viewBox="0 0 24 24"
@@ -402,5 +416,23 @@ export const SubMira: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
         strokeLinejoin="round"
       ></path>{" "}
     </g>
+  </svg>
+);
+export const ReplyIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    {...props}
+  >
+    <path
+      d="M9 17L4 12M4 12L9 7M4 12H14C16.7614 12 19 14.2386 19 17V18"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );

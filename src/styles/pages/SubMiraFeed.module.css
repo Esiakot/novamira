@@ -1,0 +1,121 @@
+/* ═══════════════════════════════════════
+   SubMira feed page
+   ═══════════════════════════════════════ */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  font-family: var(--font-quicksand);
+  background-color: var(--background);
+}
+
+.container {
+  margin-top: calc(6vh + 2rem);
+  width: 100%;
+  max-width: 600px;
+  padding: 0 1rem 2rem;
+}
+
+.loading {
+  text-align: center;
+  color: var(--text-secondary);
+  opacity: 0.6;
+  padding: 3rem 0;
+  font-size: 0.9rem;
+}
+
+/* ── Topic header ── */
+.topicHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  background-color: var(--background-input);
+  border-radius: 14px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  box-shadow: var(--inset-shadow);
+}
+
+.topicInfo {
+  flex: 1;
+}
+
+.topicName {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.topicIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.topicDesc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  line-height: 1.45;
+  opacity: 0.85;
+}
+
+.topicStats {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  opacity: 0.55;
+}
+
+.followBtn {
+  padding: 0.4rem 1.2rem;
+  border: 2px solid var(--icons-border);
+  border-radius: 20px;
+  background: none;
+  color: var(--icons-border);
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-family: var(--font-quicksand);
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  margin-left: 1rem;
+  flex-shrink: 0;
+}
+
+.followBtn:hover {
+  background: var(--icons-border);
+  color: #fff;
+}
+
+.followBtn.following {
+  background: var(--icons-border);
+  color: #fff;
+}
+
+.followBtn.following:hover {
+  background: #c62828;
+  border-color: #c62828;
+}
+
+.backLink {
+  display: inline-block;
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--icons-border);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.backLink:hover {
+  color: var(--icons-hover);
+}

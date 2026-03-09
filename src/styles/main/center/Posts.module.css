@@ -2,49 +2,140 @@
   width: 100%;
   padding: 1rem;
   background-color: var(--background-input);
-  border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+  border-radius: 0.5rem;
   margin-bottom: 1rem;
   overflow: hidden;
   box-shadow: var(--inset-shadow);
 }
 .miraHead {
   width: 100%;
-  height: 2.5rem;
   display: flex;
   flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 .avatar {
   height: 2.5rem;
   width: 2.5rem;
   border-radius: 50%;
+  object-fit: cover;
 }
 .usernameDiv {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 1rem;
-  height: 2.5rem;
+  flex: 1;
 }
-.username {
+.displayName {
   font-size: 1rem;
   font-weight: 600;
   color: var(--text-secondary);
 }
-.miraPostInput {
+.username {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+.timestamp {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  opacity: 0.6;
+}
+
+/* ── Clickable author links ── */
+.authorLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.displayNameLink {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.displayNameLink:hover {
+  opacity: 0.7;
+}
+.usernameLink {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  opacity: 0.7;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.usernameLink:hover {
+  opacity: 0.5;
+}
+
+/* ── Long post badge ── */
+.longPostBadge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.75rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #001229 0%, #3b71b8 100%);
+  border-radius: 6px;
+  color: #fff;
+  font-size: 0.85rem;
+}
+.longPostTitle {
+  font-weight: 600;
+  flex: 1;
+}
+.readingTime {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+/* ── Post content ── */
+.postBody {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 0.4rem;
+  transition: background-color 0.15s;
+  cursor: pointer;
+}
+.postBody:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+.miraPostContent {
   min-width: 100%;
   max-width: 100%;
   border: none;
   outline: none;
-  padding: 0 3.5rem 1rem 3.5rem;
-
+  padding: 0.5rem 1rem 1rem 1rem;
   font-size: 1rem;
   font-weight: 500;
-  background-color: var(--background-post);
-  box-shadow: var(--inset-shadow-post);
   color: var(--text-secondary);
   word-break: break-word;
   font-family: inherit;
+  white-space: pre-wrap;
+  line-height: 1.5;
 }
+.readMoreBtn {
+  display: inline-block;
+  background: none;
+  border: none;
+  color: var(--icons-border);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0 1rem 0.5rem;
+  transition: color 0.2s;
+  text-decoration: none;
+}
+.readMoreBtn:hover {
+  color: var(--icons-hover);
+  text-decoration: none;
+}
+
 .miraPostActions {
   height: 4vh;
   display: flex;
@@ -58,11 +149,9 @@
   gap: 0.5rem;
   margin-left: 1rem;
 }
-.charCount {
-  color: var(--text-secondary);
-  font-size: 1rem;
-  font-weight: 500;
-  user-select: none;
+.count {
+  font-size: 0.8rem;
+  margin-left: 0.2rem;
 }
 .icons {
   background: none;
@@ -73,27 +162,279 @@
   transition: all 0.2s;
   display: flex;
   align-items: center;
-
   font-size: 0.8rem;
   font-weight: 600;
 }
 .icons:hover {
   color: var(--icons-hover);
 }
-.sendButton {
-  height: 1.5rem;
-  width: 5vw;
-  background-color: var(--background);
+.liked {
+  color: #4caf50;
+}
+.liked:hover {
+  color: #388e3c;
+}
+.disliked {
+  color: #f44336;
+}
+.disliked:hover {
+  color: #c62828;
+}
+
+/* ── Topic badge ── */
+.topicBadge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--icons-border);
+  background: rgba(59, 113, 184, 0.1);
+  padding: 0.15rem 0.5rem;
+  border-radius: 12px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+.topicBadge:hover {
+  background: rgba(59, 113, 184, 0.2);
+}
+
+/* ── Reply context ── */
+.replyContext {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
   color: var(--text-secondary);
-  box-shadow: var(--shadow);
-  margin-right: 1rem;
-  border: none;
-  border-radius: 1.5rem;
+  padding: 0 0.5rem 0.3rem;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.replyContext:hover {
+  color: var(--icons-border);
+  text-decoration: underline;
+}
+
+/* ── Empty feed ── */
+.emptyFeed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+  color: var(--text-secondary);
+  opacity: 0.6;
+  font-size: 1rem;
+  text-align: center;
+  gap: 0.25rem;
+}
+
+/* ── Image gallery (short posts) ── */
+.imageGallery {
+  display: grid;
+  gap: 4px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 0 1rem 0.5rem;
+}
+.gallery1 {
+  grid-template-columns: 1fr;
+}
+.gallery2 {
+  grid-template-columns: 1fr 1fr;
+}
+.gallery3 {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+}
+.gallery3 .galleryImage:first-child {
+  grid-column: 1 / -1;
+}
+.gallery4 {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+.galleryImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  max-height: 300px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.galleryImage:hover {
+  opacity: 0.9;
+}
+
+/* ── Long post body (expanded, with inline images) ── */
+.longPostBody {
+  padding: 0.5rem 1rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  word-break: break-word;
+  font-family: inherit;
+  line-height: 1.6;
+}
+.longPostImage {
+  display: block;
+  max-width: 100%;
+  border-radius: 8px;
+  margin: 0.75rem 0;
+}
+
+/* ── Reply form ── */
+.replyForm {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--border-color);
+}
+.replyInput {
+  width: 100%;
+  min-height: 60px;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.9rem;
+  resize: none;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.replyInput:focus {
+  border-color: var(--accent-color);
+}
+.replyError {
+  color: #e74c3c;
+  font-size: 0.8rem;
+  margin: 0.25rem 0 0;
+}
+.replyFormActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+.replyCancelBtn {
+  padding: 0.35rem 0.85rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-secondary);
   font-size: 0.8rem;
   cursor: pointer;
-  transition: all 0.2s;
 }
-.sendButton:hover {
-  background-color: var(--icons);
-  color: var(--background-input);
+.replyCancelBtn:hover {
+  background: var(--bg-secondary);
+}
+.replySubmitBtn {
+  padding: 0.35rem 0.85rem;
+  border: none;
+  border-radius: 6px;
+  background: var(--accent-color);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.replySubmitBtn:hover {
+  opacity: 0.9;
+}
+.replySubmitBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Reply card ── */
+.replyCard {
+  padding: 0.6rem 0;
+  border-top: 1px solid var(--border-color);
+}
+.replyHead {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+}
+.replyAvatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.replyAuthor {
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+.replyAuthor:hover {
+  text-decoration: underline;
+}
+.replyUsername {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+}
+.replyTime {
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  margin-left: auto;
+}
+.replyContent {
+  margin: 0.3rem 0 0.2rem;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.replyActions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+.replyActionBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 0.15rem 0;
+}
+.replyActionBtn svg {
+  width: 16px;
+  height: 16px;
+}
+.replyActionBtn:hover {
+  color: var(--text-primary);
+}
+.replyActionBtn.liked {
+  color: var(--accent-color);
+}
+.replyActionBtn.disliked {
+  color: #e74c3c;
+}
+
+/* ── Show/hide replies button ── */
+.showRepliesBtn {
+  background: none;
+  border: none;
+  color: var(--accent-color);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.35rem 0;
+  display: block;
+}
+.showRepliesBtn:hover {
+  text-decoration: underline;
+}
+
+/* ── Replies section ── */
+.repliesSection {
+  padding: 0.25rem 0 0.5rem 0.75rem;
+}
+.childReplies {
+  margin-top: 0.25rem;
 }

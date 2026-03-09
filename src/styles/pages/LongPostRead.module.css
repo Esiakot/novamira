@@ -1,0 +1,362 @@
+/* ═══════════════════════════════════════
+   Long post read view
+   ═══════════════════════════════════════ */
+
+.container {
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  min-height: 100vh;
+}
+
+.article {
+  background-color: var(--background-input);
+  border-radius: 16px;
+  box-shadow: var(--inset-shadow);
+  overflow: hidden;
+}
+
+/* ── Header ── */
+.header {
+  padding: 2rem 2rem 1rem;
+}
+
+.backLink {
+  background: none;
+  border: none;
+  color: var(--icons-border);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 1.5rem;
+  display: inline-block;
+  transition: color 0.2s;
+}
+
+.backLink:hover {
+  color: var(--icons-hover);
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-secondary);
+  margin: 0 0 1.25rem;
+  line-height: 1.25;
+}
+
+/* ── Author ── */
+.authorRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.authorLink {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.2s;
+}
+
+.authorLink:hover {
+  opacity: 0.75;
+}
+
+.authorAvatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.authorInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.authorName {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.authorUsername {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  opacity: 0.55;
+}
+
+.postMeta {
+  display: flex;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  opacity: 0.55;
+}
+
+/* ── Cover image ── */
+.coverImage {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+}
+
+/* ── Body ── */
+.body {
+  padding: 1.5rem 2rem;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  word-break: break-word;
+}
+
+.bodyImage {
+  display: block;
+  max-width: 100%;
+  border-radius: 10px;
+  margin: 1.25rem 0;
+}
+
+/* ── Footer ── */
+.footer {
+  display: flex;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  border-top: 1px solid rgba(0, 18, 41, 0.1);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  opacity: 0.65;
+}
+
+/* ── States ── */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  opacity: 0.7;
+}
+
+.errorState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  color: var(--text-secondary);
+  gap: 1rem;
+}
+
+/* ── Replies section ── */
+.repliesSection {
+  padding: 1rem 2rem 1.5rem;
+  border-top: 1px solid rgba(0, 18, 41, 0.1);
+}
+
+.repliesHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.repliesHeader h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.repliesList {
+  margin-top: 0.5rem;
+}
+
+/* ── Reply form ── */
+.replyForm {
+  margin-bottom: 0.75rem;
+}
+
+.replyInput {
+  width: 100%;
+  min-height: 60px;
+  padding: 0.6rem 0.75rem;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  background: var(--background);
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 0.9rem;
+  resize: none;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.replyInput:focus {
+  border-color: var(--icons-border);
+}
+
+.replyError {
+  color: #e74c3c;
+  font-size: 0.8rem;
+  margin: 0.25rem 0 0;
+}
+
+.replyFormActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.replyCancelBtn {
+  padding: 0.4rem 0.9rem;
+  border: 2px solid rgba(0, 18, 41, 0.15);
+  border-radius: 20px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.replyCancelBtn:hover {
+  background: var(--background);
+}
+
+.replySubmitBtn {
+  padding: 0.4rem 1rem;
+  border: none;
+  border-radius: 20px;
+  background: var(--icons);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.replySubmitBtn:hover {
+  opacity: 0.85;
+}
+
+.replySubmitBtn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ── Reply card ── */
+.replyCard {
+  padding: 0.65rem 0;
+  border-top: 1px solid rgba(0, 18, 41, 0.08);
+}
+
+.replyHead {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+}
+
+.replyAvatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.replyAuthor {
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+
+.replyAuthor:hover {
+  text-decoration: underline;
+}
+
+.replyUsername {
+  color: var(--text-secondary);
+  opacity: 0.55;
+  font-size: 0.8rem;
+}
+
+.replyTime {
+  color: var(--text-secondary);
+  opacity: 0.55;
+  font-size: 0.75rem;
+  margin-left: auto;
+}
+
+.replyContent {
+  margin: 0.3rem 0 0.2rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.55;
+}
+
+.replyActions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.replyActionBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  opacity: 0.6;
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 0.15rem 0;
+  transition: opacity 0.15s;
+}
+
+.replyActionBtn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.replyActionBtn:hover {
+  opacity: 1;
+}
+
+.replyActionBtn.liked {
+  color: var(--icons-hover);
+  opacity: 1;
+}
+
+.replyActionBtn.disliked {
+  color: #e74c3c;
+  opacity: 1;
+}
+
+/* ── Show replies toggle ── */
+.showRepliesBtn {
+  background: none;
+  border: none;
+  color: var(--icons-hover);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.35rem 0;
+  display: block;
+}
+
+.showRepliesBtn:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,43 @@
+                List of relations
+ Schema |         Name         | Type  |  Owner   
+--------+----------------------+-------+----------
+ public | account              | table | postgres
+ public | account_role         | table | postgres
+ public | block                | table | postgres
+ public | conversation         | table | postgres
+ public | conversation_member  | table | postgres
+ public | following            | table | postgres
+ public | hashtag              | table | postgres
+ public | longpost             | table | postgres
+ public | mention              | table | postgres
+ public | message              | table | postgres
+ public | message_media        | table | postgres
+ public | message_reaction     | table | postgres
+ public | moderation_log       | table | postgres
+ public | mute                 | table | postgres
+ public | notification         | table | postgres
+ public | notification_setting | table | postgres
+ public | payment_history      | table | postgres
+ public | poll                 | table | postgres
+ public | poll_option          | table | postgres
+ public | poll_vote            | table | postgres
+ public | post                 | table | postgres
+ public | post_hashtag         | table | postgres
+ public | post_like            | table | postgres
+ public | post_media           | table | postgres
+ public | post_shared          | table | postgres
+ public | push_subscription    | table | postgres
+ public | report               | table | postgres
+ public | saved_collection     | table | postgres
+ public | saved_post           | table | postgres
+ public | search_history       | table | postgres
+ public | session              | table | postgres
+ public | subscription         | table | postgres
+ public | topic                | table | postgres
+ public | topic_follow         | table | postgres
+ public | topic_moderator      | table | postgres
+ public | trending             | table | postgres
+ public | user                 | table | postgres
+ public | user_role            | table | postgres
+(38 rows)
+

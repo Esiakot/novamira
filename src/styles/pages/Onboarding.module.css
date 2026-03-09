@@ -1,0 +1,468 @@
+/* ═══════════════════════════════════════
+   Onboarding — Post-Registration Flow
+   ═══════════════════════════════════════ */
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: var(--background);
+  font-family: var(--font-quicksand);
+  padding: 2rem;
+}
+
+.card {
+  background: var(--background-input);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  width: 100%;
+  max-width: 520px;
+  box-shadow: var(--inset-shadow);
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--icons);
+  text-align: center;
+  margin-bottom: 0.2rem;
+}
+
+.subtitle {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  opacity: 0.7;
+}
+
+.subtitle strong {
+  color: var(--icons);
+}
+
+/* ── Step Indicator ── */
+.stepIndicator {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.stepDot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  background: var(--foreground);
+  color: var(--text-secondary);
+  box-shadow: var(--inset-shadow);
+  transition: all 0.3s ease;
+}
+
+.stepActive .stepDot {
+  background: var(--icons);
+  color: var(--foreground);
+}
+
+.stepDone .stepDot {
+  background: var(--icons-border);
+  color: var(--foreground);
+}
+
+.stepLabel {
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  opacity: 0.5;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.stepActive .stepLabel {
+  color: var(--icons);
+  opacity: 1;
+}
+
+.stepDone .stepLabel {
+  color: var(--icons-border);
+  opacity: 0.8;
+}
+
+/* ── Form ── */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.charHint {
+  font-weight: 500;
+  opacity: 0.5;
+  text-transform: none;
+}
+
+.input {
+  width: 100%;
+  height: 40px;
+  border: none;
+  outline: none;
+  border-radius: 12px;
+  padding: 0 16px;
+  font-size: 0.82rem;
+  background: var(--foreground);
+  box-shadow: var(--inset-shadow);
+  font-family: inherit;
+  color: var(--text-primary);
+  transition: box-shadow 0.2s;
+}
+
+.input:focus {
+  box-shadow: var(--inset-shadow), 0 0 0 2px var(--icons-border);
+}
+
+.textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 0.82rem;
+  background: var(--foreground);
+  box-shadow: var(--inset-shadow);
+  font-family: inherit;
+  color: var(--text-primary);
+  resize: none;
+  transition: box-shadow 0.2s;
+}
+
+.textarea:focus {
+  box-shadow: var(--inset-shadow), 0 0 0 2px var(--icons-border);
+}
+
+/* ── Avatar ── */
+.avatarSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.avatarWrapper {
+  position: relative;
+}
+
+.avatarPreview {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: var(--inset-shadow);
+}
+
+.avatarUploadBtn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid var(--background-input);
+  background: var(--icons);
+  color: var(--foreground);
+  font-size: 0.65rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hiddenInput {
+  display: none;
+}
+
+.avatarHint {
+  font-size: 0.68rem;
+  color: var(--text-secondary);
+  opacity: 0.6;
+  font-weight: 500;
+}
+
+/* ── Error ── */
+.error {
+  color: #d32f2f;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 0.5rem 0.75rem;
+  background: rgba(211, 47, 47, 0.06);
+  border-radius: 8px;
+  border-left: 3px solid #d32f2f;
+}
+
+/* ── Step Desc ── */
+.stepDesc {
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  opacity: 0.7;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+/* ── Topics Grid ── */
+.topicGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.topicChip {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  border: none;
+  background: var(--foreground);
+  box-shadow: var(--inset-shadow);
+  color: var(--text-primary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.topicChip:hover {
+  box-shadow: var(--inset-shadow), 0 0 0 2px var(--icons-border);
+}
+
+.topicSelected {
+  background: var(--icons);
+  color: var(--foreground);
+}
+
+.topicSelected:hover {
+  box-shadow: none;
+  background: var(--icons-border);
+}
+
+.topicIcon {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.checkMark {
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.selectedCount {
+  text-align: center;
+  font-size: 0.72rem;
+  color: var(--icons);
+  font-weight: 600;
+}
+
+.loading,
+.emptyTopics {
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  opacity: 0.6;
+  padding: 1rem 0;
+}
+
+/* ── Step Buttons ── */
+.stepButtons {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.nextBtn,
+.finishBtn {
+  flex: 1;
+  height: 42px;
+  border: none;
+  border-radius: 12px;
+  background: var(--icons);
+  color: var(--foreground);
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.nextBtn:hover,
+.finishBtn:hover {
+  background: var(--icons-border);
+}
+
+.nextBtn:active,
+.finishBtn:active {
+  transform: scale(0.98);
+}
+
+.finishBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.backBtn {
+  flex: 0 0 auto;
+  height: 42px;
+  padding: 0 1.25rem;
+  border: none;
+  border-radius: 12px;
+  background: var(--foreground);
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: var(--inset-shadow);
+  transition: background 0.2s;
+}
+
+.backBtn:hover {
+  background: var(--background);
+}
+
+.skipBtn {
+  flex: 0 0 auto;
+  height: 42px;
+  padding: 0 1rem;
+  border: none;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.skipBtn:hover {
+  opacity: 1;
+}
+
+/* ── Final Section ── */
+.finalSection {
+  background: var(--foreground);
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: var(--inset-shadow);
+}
+
+.profilePreview {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.finalAvatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.finalName {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.finalUsername {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  opacity: 0.7;
+  margin: 0;
+}
+
+.finalBio {
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  margin: 0 0 0.5rem 0;
+  line-height: 1.4;
+}
+
+.finalMeta {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  opacity: 0.7;
+  margin: 0 0 0.5rem 0;
+}
+
+.finalTopics {
+  margin-top: 0.5rem;
+}
+
+.finalTopicsLabel {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.finalTopicList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.4rem;
+}
+
+.finalTopicTag {
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: var(--icons);
+  color: var(--foreground);
+  font-size: 0.68rem;
+  font-weight: 600;
+}
+
+.readyText {
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  opacity: 0.7;
+  font-weight: 500;
+  line-height: 1.5;
+}

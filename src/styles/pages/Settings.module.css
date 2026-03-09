@@ -1,0 +1,493 @@
+/* ═══════════════════════════════════════
+   Settings page
+   ═══════════════════════════════════════ */
+
+.page {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--background);
+  font-family: var(--font-quicksand);
+  padding: 2rem 1rem;
+}
+
+/* ── Layout ── */
+.container {
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+  max-width: 900px;
+}
+
+/* ── Sidebar ── */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  width: 220px;
+  flex-shrink: 0;
+}
+
+.backButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--icons);
+  font-family: inherit;
+  text-align: left;
+  padding: 0.5rem 1rem;
+  transition: color 0.2s;
+}
+
+.backButton:hover {
+  color: var(--icons-hover);
+}
+
+.sidebarTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.tabButton {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  text-align: left;
+  border: none;
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-family: inherit;
+  transition: all 0.2s;
+  border-radius: 8px;
+  background: transparent;
+}
+
+.tabButton:hover {
+  color: var(--icons-hover);
+  background: rgba(0, 18, 41, 0.04);
+}
+
+.tabActive {
+  color: var(--icons-hover);
+  background: rgba(253, 138, 107, 0.1);
+  border-left: 3px solid var(--icons-hover);
+}
+
+/* ── Content ── */
+.content {
+  flex: 1;
+  background-color: var(--background-input);
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  box-shadow: var(--inset-shadow);
+}
+
+.title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1.25rem;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+/* ── Form ── */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.row {
+  display: flex;
+  gap: 1rem;
+}
+
+.row > .field {
+  flex: 1;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.charHint {
+  font-weight: 500;
+  opacity: 0.55;
+}
+
+/* ── Inputs ── */
+.input {
+  width: 100%;
+  height: 3.5vh;
+  border: none;
+  outline: none;
+  border-radius: 12px;
+  padding: 0 20px;
+  font-size: 0.8rem;
+  background-color: var(--foreground);
+  box-shadow: var(--inset-shadow);
+  font-family: inherit;
+  color: var(--text-primary);
+  transition: box-shadow 0.2s;
+}
+
+.input:focus {
+  box-shadow: var(--inset-shadow), 0 0 0 2px var(--icons-border);
+}
+
+.input::placeholder {
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 10vh;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  padding: 0.6rem 1rem;
+  font-size: 0.8rem;
+  background-color: var(--foreground);
+  box-shadow: var(--inset-shadow);
+  font-family: inherit;
+  color: var(--text-primary);
+  resize: vertical;
+  transition: box-shadow 0.2s;
+}
+
+.textarea:focus {
+  box-shadow: var(--inset-shadow), 0 0 0 2px var(--icons-border);
+}
+
+.textarea::placeholder {
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.hiddenInput {
+  display: none;
+}
+
+/* ── Banner ── */
+.bannerSection {
+  margin: -1.5rem -2rem 0 -2rem;
+}
+
+.bannerPreview {
+  width: 100%;
+  height: 140px;
+  border-radius: 12px 12px 0 0;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bannerUploadBtn {
+  padding: 0.45rem 1.1rem;
+  border: none;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  backdrop-filter: blur(6px);
+}
+
+.bannerUploadBtn:hover:not(:disabled) {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.bannerUploadBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Avatar ── */
+.avatarSection {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: -1.5rem;
+  padding-left: 0.5rem;
+}
+
+.avatarWrapper {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.avatarPreview {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: var(--shadow);
+  border: 3px solid var(--background-input);
+}
+
+.avatarUploadBtn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  border: 2px solid var(--background-input);
+  background-color: var(--icons);
+  color: #fff;
+  font-size: 0.7rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.avatarUploadBtn:hover:not(:disabled) {
+  background-color: var(--icons-hover);
+}
+
+.avatarUploadBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.avatarInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.avatarHint {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  opacity: 0.55;
+}
+
+/* ── Toggle ── */
+.toggleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.6rem 0;
+}
+
+.toggleInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.toggleLabel {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.toggleDesc {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  opacity: 0.65;
+}
+
+.toggle {
+  position: relative;
+  width: 2.6rem;
+  height: 1.4rem;
+  border-radius: 1rem;
+  border: none;
+  background-color: var(--background);
+  box-shadow: var(--inset-shadow);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.toggleOn {
+  background-color: var(--icons-border);
+}
+
+.toggleThumb {
+  position: absolute;
+  top: 0.15rem;
+  left: 0.15rem;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+  background-color: var(--foreground);
+  box-shadow: var(--shadow);
+  transition: all 0.25s ease;
+}
+
+.toggleOn .toggleThumb {
+  left: calc(100% - 1.25rem);
+}
+
+/* ── Save button ── */
+.saveButton {
+  width: 100%;
+  height: 3.5vh;
+  border: none;
+  border-radius: 20px;
+  background-color: var(--icons);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 0.5rem;
+}
+
+.saveButton:hover:not(:disabled) {
+  background-color: var(--icons-border);
+}
+
+.saveButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Messages ── */
+.error {
+  color: #d32f2f;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 0.5rem 0.75rem;
+  background: rgba(211, 47, 47, 0.06);
+  border-left: 3px solid #d32f2f;
+  border-radius: 8px;
+}
+
+.success {
+  color: #2e7d32;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 0.5rem 0.75rem;
+  background: rgba(46, 125, 50, 0.06);
+  border-left: 3px solid #2e7d32;
+  border-radius: 8px;
+}
+
+/* ── Section divider ── */
+.sectionDivider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--icons) 50%, transparent 100%);
+  opacity: 0.12;
+  margin: 1.5rem 0;
+}
+
+/* ── Info grid ── */
+.infoGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.infoRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.3rem 0;
+}
+
+.infoLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.infoValue {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  opacity: 0.65;
+}
+
+/* ── Sessions ── */
+.sessionList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sessionItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.65rem 0.85rem;
+  background-color: var(--foreground);
+  border-radius: 10px;
+  box-shadow: var(--inset-shadow);
+}
+
+.sessionInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.sessionDevice {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.sessionMeta {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  opacity: 0.55;
+}
+
+.revokeButton {
+  padding: 0.3rem 0.8rem;
+  border: none;
+  border-radius: 20px;
+  background-color: rgba(211, 47, 47, 0.08);
+  color: #d32f2f;
+  font-size: 0.7rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.revokeButton:hover {
+  background-color: #d32f2f;
+  color: #fff;
+}

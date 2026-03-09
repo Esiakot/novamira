@@ -1,9 +1,7 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import styles from "@/styles/main/left/Profile.module.css";
-// On importe le type depuis le service pour être sûr que le Front et le Back parlent la même langue
-import type { UserProfile } from "@/libs/services/users/profile.service";
-import Link from "next/link";
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import styles from "@/styles/main/left/Profil.module.css";
 import {
   SettingsIcon,
   Following,
@@ -11,43 +9,23 @@ import {
   LongTextIcon,
   MiraIcon,
   SubMira,
-} from "../../FlatIcons";
+  PrivateLockIcon,
+} from "@/assets/FlatIcons";
+import Link from "next/link";
+import { useAuth } from "@/hooks/useAuth";
+import FollowListModal from "@/components/FollowListModal";
 
-export default function Profile() {
-  const [profile, setProfile] = useState<UserProfile | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+function formatCount(n: number): string {
+  if (n >= 1_000_000) return (n / 1_000_000).toFixed(1).replace(/\.0$/, "") + "M";
+  if (n >= 1_000) return (n / 1_000).toFixed(1).replace(/\.0$/, "") + "k";
+  return n.toString();
+}
 
-  useEffect(() => {
-    const fetchProfile = async () => {
-      try {
-        const res = await fetch("/api/users/profile");
-
-        if (res.status === 401) {
-          setError("Non connecté");
-          return;
-        }
-
-        if (!res.ok) {
-          setError("Erreur chargement profil");
-          return;
-        }
-
-        const data: UserProfile = await res.json();
-        setProfile(data);
-      } catch (e) {
-        console.error(e);
-        setError("Erreur réseau");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProfile();
-  }, []);
-
-  if (loading) return <div className={styles.base}>Chargement...</div>;
-  if (error) return <div className={styles.base}>{error}</div>;
+export default function Profil() {
+  const { user } = useAuth();
+  const account = user?.account;
+  const router = useRouter();
+  const [followModal, setFollowModal] = useState<"followers" | "following" | null>(null);
 
   return (
     <>
@@ -56,65 +34,76 @@ export default function Profile() {
           <div className={styles.profil}>
             <div className={styles.profilContainer}>
               <img
-                src={profile?.avatar_url || "/default-avatar.png"}
+                src={account?.avatar_url || "/test-1.jpg"}
                 alt="User Avatar"
                 className={styles.avatar}
               />
               <div className={styles.userDetails}>
                 <div className={styles.usernameContainer}>
-                  <button className={styles.usernameButton}>
-                    {profile?.username_display || "Utilisateur"}
-                  </button>
-                  <button className={styles.userButton}>
-                    @{profile?.username_handle || "handle"}
-                  </button>
+                  <Link href={`/profile/${account?.username}`} className={styles.usernameButton}>
+                    {account?.display_name || "Utilisateur"}
+                    {account?.is_private && (
+                      <span className={styles.privateIcon} title="Compte privé">
+                        <PrivateLockIcon />
+                      </span>
+                    )}
+                  </Link>
+                  <Link href={`/profile/${account?.username}`} className={styles.userButton}>
+                    @{account?.username || "user"}
+                  </Link>
                 </div>
-                <p className={styles.userBio}>{profile?.bio || ""}</p>
+                {account?.bio && (
+                  <p className={styles.userBio}>
+                    {account.bio.length > 150
+                      ? account.bio.slice(0, 150) + "\u2026"
+                      : account.bio}
+                  </p>
+                )}
               </div>
             </div>
             <div className={styles.optionContainer}>
               <div className={styles.userInfo}>
-                <button className={styles.optionButton}>
+                <button className={styles.optionButton} onClick={() => router.push("/settings")}>
                   <SettingsIcon />
                 </button>
-                <button className={styles.optionButton}>
-                  <SubMira /> <span className={styles.count}>125</span>
+                <button className={styles.optionButton} onClick={() => router.push("/submiras")}>
+                  <SubMira /> <span className={styles.count}>{formatCount(account?.topic_follow_count ?? 0)}</span>
                 </button>
-                <button className={styles.optionButton}>
-                  <Following /> <span className={styles.count}>36.2k</span>
+                <button className={styles.optionButton} onClick={() => setFollowModal("following")}>
+                  <Following /> <span className={styles.count}>{formatCount(account?.following_count ?? 0)}</span>
                 </button>
-                <button className={styles.optionButton}>
-                  <Followers /> <span className={styles.count}>925</span>
+                <button className={styles.optionButton} onClick={() => setFollowModal("followers")}>
+                  <Followers /> <span className={styles.count}>{formatCount(account?.follower_count ?? 0)}</span>
                 </button>
               </div>
               <div className={styles.textCount}>
                 <button className={styles.optionButton}>
-                  <LongTextIcon /> <span className={styles.count}>126</span>
+                  <LongTextIcon /> <span className={styles.count}>{formatCount(account?.longpost_count ?? 0)}</span>
                 </button>
                 <button className={styles.optionButton}>
-                  <MiraIcon /> <span className={styles.count}>5.2k</span>
+                  <MiraIcon /> <span className={styles.count}>{formatCount(account?.post_count ?? 0)}</span>
                 </button>
               </div>
             </div>
           </div>
-
           <div className={styles.navigationPages}>
             <button className={styles.navButton}>Posts</button>
             <button className={styles.navButton}>Media</button>
             <button className={styles.navButton}>Likes</button>
             <button className={styles.navButton}>Replies</button>
             <button className={styles.navButton}>Mirrors</button>
-            <button className={styles.navButton}>SubMiras</button>
+            <Link href="/submiras" className={styles.navButton}>SubMiras</Link>
             <button className={styles.navButton}>Highlights</button>
           </div>
           <div className={styles.rgpdPages}>
             <div className={styles.rgpdTop}>
+              {" "}
               <Link href="/contact" className={styles.rgpdLink}>
                 Contact
-              </Link>
+              </Link>{" "}
               <Link href="/legal" className={styles.rgpdLink}>
                 Mentions légales
-              </Link>
+              </Link>{" "}
               <Link href="/accessibility" className={styles.rgpdLink}>
                 Accessibilité
               </Link>
@@ -129,7 +118,7 @@ export default function Profile() {
               <Link href="/cookies" className={styles.rgpdLink}>
                 Politique
                 <br /> de cookies
-              </Link>
+              </Link>{" "}
             </div>
             <div className={styles.copyright}>
               © 2026 novamira - Tous droits réservés - v0.9.3
@@ -137,6 +126,14 @@ export default function Profile() {
           </div>
         </div>
       </div>
+
+      {followModal && account && (
+        <FollowListModal
+          username={account.username}
+          type={followModal}
+          onClose={() => setFollowModal(null)}
+        />
+      )}
     </>
   );
 }

@@ -26,6 +26,23 @@
   font-weight: 600;
 }
 
+.topicSelect {
+  margin: 0.3rem 0.5rem;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background-color: var(--background-input);
+  border: 1px solid var(--icons);
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+}
+.topicSelect:focus {
+  outline: none;
+  border-color: var(--icons-border);
+}
+
 .miraNewsActions {
   height: 4vh;
   display: flex;
@@ -81,4 +98,139 @@
 .sendButton:hover {
   background-color: var(--icons);
   color: var(--background-input);
+}
+.sendButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Long post editor ── */
+.longPostEditor {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+.longPostHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--icons);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.longPostLabel {
+  flex: 1;
+  color: var(--text-secondary);
+}
+.longPostClose {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+}
+.longPostClose:hover {
+  background-color: var(--button-secondary-hover);
+}
+.longPostTitle {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  background-color: var(--background-post);
+  box-shadow: var(--inset-shadow-post);
+  color: var(--text-secondary);
+  font-family: inherit;
+  border-radius: 4px;
+}
+.longPostTitle::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.6;
+}
+.longPostBody {
+  width: 100%;
+  min-height: 25vh;
+  border: none;
+  outline: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: var(--background-post);
+  box-shadow: var(--inset-shadow-post);
+  color: var(--text-secondary);
+  font-family: inherit;
+  resize: vertical;
+  border-radius: 4px;
+}
+.longPostBody::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.6;
+}
+.longPostFooter {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 0.5rem;
+}
+.activeIcon {
+  color: #43b847 !important;
+}
+.error {
+  color: #d32f2f;
+  font-size: 0.85rem;
+  padding: 0.25rem 1rem;
+  margin: 0;
+}
+
+/* ── Image preview grid ── */
+.imagePreviewGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+}
+.imagePreviewItem {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 1;
+}
+.imagePreviewImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.imageRemoveBtn {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+.imageRemoveBtn:hover {
+  background: rgba(211, 47, 47, 0.9);
+}
+.imageCount {
+  font-size: 0.7rem;
+  margin-left: 2px;
+  color: var(--text-secondary);
+}
+.icons:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
